@@ -1,7 +1,8 @@
 ---
 - name: Ejecutar script para backup
   shell: ./setup.sh -e "backup_dest= {{ destino_final }}" -b
-  chdir: "{{ dscript_install }}"
+  args:
+    chdir: "{{ dscript_install }}"
   register: backupaap_output
   
 - name: Mostrar salida del backup
