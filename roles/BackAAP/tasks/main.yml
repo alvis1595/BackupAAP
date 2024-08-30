@@ -1,0 +1,4 @@
+---
+name: Mostrar salida de SQL*Plus
+  debug:
+    var: sqlplus_output.stdout_lines
