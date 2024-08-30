@@ -1,4 +1,8 @@
 ---
-name: Mostrar salida de SQL*Plus
+- name: Ejecutar script para backup
+  shell: ./setup.sh -e 'backup_dest=/path/to/backup_dir/' -b
+  register: backupaap_output
+  
+- name: Mostrar salida del backup
   debug:
-    var: sqlplus_output.stdout_lines
+    var: backupaap_output.stdout_lines
