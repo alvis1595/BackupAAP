@@ -1,0 +1,9 @@
+---
+- name: Restaurar backup con archivos .gz 
+  shell: ./setup.sh -e 'restore_backup_file=/path/to/nondefault/backup.tar.gz' -r
+  register: resback_output.stdout_lines
+
+- name: Mostrar salida de la ejecución
+  debug:
+    var: resback_output.stdout_lines
+  
