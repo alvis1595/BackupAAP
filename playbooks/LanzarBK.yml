@@ -1,0 +1,7 @@
+---
+- name: Play admin
+  hosts: all
+  become: true
+  become_method: su
+  roles:
+    - role: 'roles/'
