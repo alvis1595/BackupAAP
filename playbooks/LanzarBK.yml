@@ -2,6 +2,6 @@
 - name: Play admin
   hosts: all
   become: true
-  become_method: sudo
+#  become_method: sudo
   roles:
     - role: 'roles/BackAAP'
