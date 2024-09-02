@@ -1,0 +1,5 @@
+---
+- name: pruebas
+  file:
+  shell: echo "hlae mundi"
+  register: casa_output
