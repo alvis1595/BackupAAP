@@ -24,6 +24,7 @@
     headers:
       Authorization: "Bearer {{ jfrog_api_token }}"
     src: "{{ item.path }}"
+    remote_src: true
     status_code: 201
   loop: "{{ backup_files.files }}"
   when: backup_files.matched > 0
