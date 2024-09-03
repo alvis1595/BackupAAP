@@ -10,3 +10,21 @@
 - name: Mostrar salida del backup
   debug:
     var: backupaap_output.stdout_lines
+    
+- name: Buscar archivos con fecha generados
+  ansible.builtin.find:
+    paths: "{{ destino_final }}"
+    patterns: "automation-platform-backup-*.tar.gz"
+  register: backup_files
+
+- name: Subir archivos generados a Artifactory
+  ansible.builtin.uri:
+    url: "https://alviscorp.jfrog.io/artifactory/{{ item.path | basename }}"
+    method: PUT
+    headers:
+      Authorization: "Bearer {{ jfrog_api_token }}"
+    src: "{{ item.path }}"
+    status_code: 201
+  loop: "{{ backup_files.files }}"
+  when: backup_files.matched > 0
+  
