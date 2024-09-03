@@ -19,7 +19,7 @@
 
 - name: Subir archivos generados a Artifactory
   ansible.builtin.uri:
-    url: "https://alviscorp.jfrog.io/artifactory/{{ item.path | basename }}"
+    url: "https://alviscorp.jfrog.io/artifactory/ipd-ansible/{{ item.path | basename }}"
     method: PUT
     headers:
       Authorization: "Bearer {{ jfrog_api_token }}"
